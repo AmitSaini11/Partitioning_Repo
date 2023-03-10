@@ -619,7 +619,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"folderPath": "Set partitioning/RoundRobin",
+						"folderPath": "Set partitioning/RoundRobinSecond",
 						"fileSystem": "outputcontainer"
 					},
 					"columnDelimiter": ",",
