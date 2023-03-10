@@ -108,7 +108,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     partitionBy('hash', 10,",
+				"     partitionBy('dynamicRange', 10,",
 				"          EQRY_ENQRY_NO",
 				"     )) ~> SalesAfterSalesCRMSCEQRY",
 				"SalesAfterSalesCRMSCEQRY sink(allowSchemaDrift: true,",
@@ -118,7 +118,7 @@
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     partitionBy('hash', 10,",
+				"     partitionBy('dynamicRange', 10,",
 				"          EQRY_ENQRY_NO",
 				"     )) ~> sink1"
 			]
