@@ -118,7 +118,7 @@
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     partitionBy('hash', 2,",
+				"     partitionBy('hash', 10,",
 				"          EQRY_ENQRY_NO",
 				"     )) ~> sink1"
 			]
