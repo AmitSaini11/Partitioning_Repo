@@ -587,7 +587,8 @@
 						"     allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     ignoreNoFilesFound: false,",
-						"     partitionBy('dynamicRange', 10,",
+						"     partitionBy('key',",
+						"          0,",
 						"          EQRY_ENQRY_NO",
 						"     )) ~> SalesAfterSalesCRMSCEQRY",
 						"SalesAfterSalesCRMSCEQRY sink(allowSchemaDrift: true,",
@@ -597,7 +598,8 @@
 						"     postCommands: [],",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true,",
-						"     partitionBy('dynamicRange', 10,",
+						"     partitionBy('key',",
+						"          0,",
 						"          EQRY_ENQRY_NO",
 						"     )) ~> sink1"
 					]
@@ -623,7 +625,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"folderPath": "Set partitioning/Dynamic Range",
+						"folderPath": "Set partitioning/Key",
 						"fileSystem": "outputcontainer"
 					},
 					"columnDelimiter": ",",
