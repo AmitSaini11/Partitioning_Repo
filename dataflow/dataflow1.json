@@ -108,8 +108,9 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     partitionBy('fixed', 9,",
-				"          equals(EQRY_ENQRY_NO, EQRY_CORP_NO)",
+				"     partitionBy('key',",
+				"          0,",
+				"          EQRY_ENQRY_NO",
 				"     )) ~> SalesAfterSalesCRMSCEQRY",
 				"SalesAfterSalesCRMSCEQRY sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
@@ -118,8 +119,9 @@
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     partitionBy('fixed', 8,",
-				"          equals(EQRY_ENQRY_NO, EQRY_CORP_NO)",
+				"     partitionBy('key',",
+				"          0,",
+				"          EQRY_ENQRY_NO",
 				"     )) ~> sink1"
 			]
 		}
