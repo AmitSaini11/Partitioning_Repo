@@ -108,7 +108,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     partitionBy('fixed', 10,",
+				"     partitionBy('fixed', 9,",
 				"          equals(EQRY_ENQRY_NO, EQRY_CORP_NO)",
 				"     )) ~> SalesAfterSalesCRMSCEQRY",
 				"SalesAfterSalesCRMSCEQRY sink(allowSchemaDrift: true,",
