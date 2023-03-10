@@ -125,7 +125,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     partitionBy('roundRobin', 200)) ~> SalesAfterSalesCRMSCEQRY",
+				"     partitionBy('roundRobin', 20)) ~> SalesAfterSalesCRMSCEQRY",
 				"source(output(",
 				"          EQCR_DLR_NO as string,",
 				"          EQCR_ENQRY_NO as string,",
@@ -150,7 +150,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     partitionBy('roundRobin', 200)) ~> SalesCRMSCEQCRTB",
+				"     partitionBy('roundRobin', 20)) ~> SalesCRMSCEQCRTB",
 				"SalesAfterSalesCRMSCEQRY select(mapColumn(",
 				"          EQRY_DLR_NO,",
 				"          EQRY_ENQRY_NO,",
@@ -266,7 +266,7 @@
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     partitionBy('roundRobin', 200)) ~> sink1"
+				"     partitionBy('roundRobin', 20)) ~> sink1"
 			]
 		}
 	}
