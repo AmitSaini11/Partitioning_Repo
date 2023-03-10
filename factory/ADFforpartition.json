@@ -1,0 +1,9 @@
+{
+	"name": "ADFforpartition",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "2a32f05d-dd42-4366-b176-9563b9133747",
+		"tenantId": "90d12e33-ad5e-4e82-8b5e-82bff0658ae0"
+	}
+}
