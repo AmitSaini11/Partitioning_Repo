@@ -118,7 +118,7 @@
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     partitionBy('fixed', 10,",
+				"     partitionBy('fixed', 8,",
 				"          equals(EQRY_ENQRY_NO, EQRY_CORP_NO)",
 				"     )) ~> sink1"
 			]
