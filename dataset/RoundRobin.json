@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "Set partitioning/RoundRobinSecond",
+				"folderPath": "Set partitioning/Hash",
 				"fileSystem": "outputcontainer"
 			},
 			"columnDelimiter": ",",
