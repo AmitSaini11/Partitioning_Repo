@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "Set partitioning/Hash",
+				"folderPath": "Set partitioning/Dynamic Range",
 				"fileSystem": "outputcontainer"
 			},
 			"columnDelimiter": ",",
