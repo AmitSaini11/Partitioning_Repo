@@ -1,5 +1,5 @@
 {
-	"name": "ETLdataflowDynamic_Range",
+	"name": "ETLdataflow_key",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -112,7 +112,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     partitionBy('hash', 5,",
+				"     partitionBy('key',",
+				"          0,",
 				"          EQRY_DLR_NO",
 				"     )) ~> source1",
 				"source1 select(mapColumn(",
