@@ -32,7 +32,7 @@
 			],
 			"scriptLines": [
 				"parameters{",
-				"     FilePath as string ($FileName)",
+				"     FilePath as string ($FilePath)",
 				"}",
 				"source(output(",
 				"          EQRY_DLR_NO as string,",
