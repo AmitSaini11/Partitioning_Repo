@@ -17,12 +17,7 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "ETLdataflow",
-						"type": "DataFlowReference",
-						"datasetParameters": {
-							"source1": {
-								"FileName": "Stage1_Sales_AfterSales_CRM_SCEQRY_TB.csv"
-							}
-						}
+						"type": "DataFlowReference"
 					},
 					"compute": {
 						"coreCount": 8,
