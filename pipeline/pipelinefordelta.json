@@ -22,6 +22,10 @@
 							"FilePath": {
 								"value": "@pipeline().parameters.FileName",
 								"type": "Expression"
+							},
+							"parameter1": {
+								"value": "'@{pipeline().parameters.FileName}'",
+								"type": "Expression"
 							}
 						}
 					},
@@ -35,7 +39,10 @@
 		],
 		"parameters": {
 			"FileName": {
-				"type": "Array"
+				"type": "string"
+			},
+			"DemoName": {
+				"type": "string"
 			}
 		},
 		"annotations": []
