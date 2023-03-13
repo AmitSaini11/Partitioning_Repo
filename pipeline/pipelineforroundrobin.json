@@ -1,5 +1,5 @@
 {
-	"name": "pipelinefordelta",
+	"name": "pipelineforroundrobin",
 	"properties": {
 		"activities": [
 			{
