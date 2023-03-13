@@ -682,6 +682,10 @@
 						}
 					],
 					"scriptLines": [
+						"parameters{",
+						"     FilePath as string ($parameter1),",
+						"     parameter1 as string ($FilePath)",
+						"}",
 						"source(output(",
 						"          EQRY_DLR_NO as string,",
 						"          EQRY_ENQRY_NO as string,",
@@ -822,7 +826,7 @@
 						"select1 sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     format: 'delta',",
-						"     fileSystem: 'deltaformat',",
+						"     fileSystem: 'filename',",
 						"     mergeSchema: false,",
 						"     autoCompact: false,",
 						"     optimizedWrite: false,",
@@ -883,11 +887,21 @@
 							"dataflow": {
 								"referenceName": "ETLdataflow",
 								"type": "DataFlowReference",
-								"parameters": {},
+								"parameters": {
+									"FilePath": {
+										"value": "@pipeline().parameters.FileName",
+										"type": "Expression"
+									},
+									"parameter1": {
+										"value": "'@{pipeline().parameters.FileName}'",
+										"type": "Expression"
+									}
+								},
 								"datasetParameters": {
 									"source1": {},
 									"sink1": {}
-								}
+								},
+								"linkedServiceParameters": {}
 							},
 							"staging": {},
 							"compute": {
@@ -901,6 +915,14 @@
 				"policy": {
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
+				},
+				"parameters": {
+					"FileName": {
+						"type": "string"
+					},
+					"DemoName": {
+						"type": "string"
+					}
 				},
 				"annotations": []
 			},
