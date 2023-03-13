@@ -5,12 +5,20 @@
 			"referenceName": "ADLSGen2LinkServices",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"FileName": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Stage1_Sales_AfterSales_CRM_SCEQRY_TB.csv",
+				"fileName": {
+					"value": "@dataset().FileName",
+					"type": "Expression"
+				},
 				"fileSystem": "inputcontainer"
 			},
 			"columnDelimiter": ",",

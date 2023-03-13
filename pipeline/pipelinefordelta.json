@@ -27,14 +27,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"FileName": {
-				"type": "string"
-			},
-			"DemoName": {
-				"type": "string"
-			}
-		},
 		"annotations": []
 	}
 }
