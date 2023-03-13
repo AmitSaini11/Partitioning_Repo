@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ADLSGen2LinkServices'"
 		},
+		"LinkServicesAzureSqlDatabase_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LinkServicesAzureSqlDatabase'"
+		},
 		"SecondAzureDataLakeStorageLinkServices_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'SecondAzureDataLakeStorageLinkServices'"
@@ -52,6 +56,9 @@
 					},
 					"ADLSGen2LinkServices_accountKey": {
 						"value": "[parameters('ADLSGen2LinkServices_accountKey')]"
+					},
+					"LinkServicesAzureSqlDatabase_connectionString": {
+						"value": "[parameters('LinkServicesAzureSqlDatabase_connectionString')]"
 					},
 					"SecondAzureDataLakeStorageLinkServices_accountKey": {
 						"value": "[parameters('SecondAzureDataLakeStorageLinkServices_accountKey')]"
