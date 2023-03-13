@@ -11,9 +11,17 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ADLSGen2LinkServices'"
 		},
+		"SecondAzureDataLakeStorageLinkServices_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'SecondAzureDataLakeStorageLinkServices'"
+		},
 		"ADLSGen2LinkServices_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://partitionstorage001.dfs.core.windows.net/"
+		},
+		"SecondAzureDataLakeStorageLinkServices_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://secondstorage01.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -45,8 +53,14 @@
 					"ADLSGen2LinkServices_accountKey": {
 						"value": "[parameters('ADLSGen2LinkServices_accountKey')]"
 					},
+					"SecondAzureDataLakeStorageLinkServices_accountKey": {
+						"value": "[parameters('SecondAzureDataLakeStorageLinkServices_accountKey')]"
+					},
 					"ADLSGen2LinkServices_properties_typeProperties_url": {
 						"value": "[parameters('ADLSGen2LinkServices_properties_typeProperties_url')]"
+					},
+					"SecondAzureDataLakeStorageLinkServices_properties_typeProperties_url": {
+						"value": "[parameters('SecondAzureDataLakeStorageLinkServices_properties_typeProperties_url')]"
 					}
 				}
 			},

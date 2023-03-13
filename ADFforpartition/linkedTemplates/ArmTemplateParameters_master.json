@@ -8,8 +8,14 @@
 		"ADLSGen2LinkServices_accountKey": {
 			"value": ""
 		},
+		"SecondAzureDataLakeStorageLinkServices_accountKey": {
+			"value": ""
+		},
 		"ADLSGen2LinkServices_properties_typeProperties_url": {
 			"value": "https://partitionstorage001.dfs.core.windows.net/"
+		},
+		"SecondAzureDataLakeStorageLinkServices_properties_typeProperties_url": {
+			"value": "https://secondstorage01.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"value": ""

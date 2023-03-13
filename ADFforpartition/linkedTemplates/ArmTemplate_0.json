@@ -11,9 +11,17 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ADLSGen2LinkServices'"
 		},
+		"SecondAzureDataLakeStorageLinkServices_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'SecondAzureDataLakeStorageLinkServices'"
+		},
 		"ADLSGen2LinkServices_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://partitionstorage001.dfs.core.windows.net/"
+		},
+		"SecondAzureDataLakeStorageLinkServices_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://secondstorage01.dfs.core.windows.net/"
 		}
 	},
 	"variables": {
@@ -36,6 +44,51 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SecondAzureDataLakeStorageLinkServices')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('SecondAzureDataLakeStorageLinkServices_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('SecondAzureDataLakeStorageLinkServices_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/RoundRobin')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ADLSGen2LinkServices",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "Set partitioning/Key",
+						"fileSystem": "outputcontainer"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ADLSGen2LinkServices')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/Sales_AfterSales_CRM_SCEQRY_TB')]",
@@ -476,34 +529,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/RoundRobin')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "ADLSGen2LinkServices",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"folderPath": "Set partitioning/Key",
-						"fileSystem": "outputcontainer"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ADLSGen2LinkServices')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/dataflow1')]",
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
@@ -640,13 +665,210 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
+			"name": "[concat(parameters('factoryName'), '/ETLdataflow')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "Sales_AfterSales_CRM_SCEQRY_TB",
+								"type": "DatasetReference"
+							},
+							"name": "source1"
+						}
+					],
+					"sinks": [
+						{
+							"linkedService": {
+								"referenceName": "SecondAzureDataLakeStorageLinkServices",
+								"type": "LinkedServiceReference"
+							},
+							"name": "sink1",
+							"rejectedDataLinkedService": {
+								"referenceName": "SecondAzureDataLakeStorageLinkServices",
+								"type": "LinkedServiceReference"
+							}
+						}
+					],
+					"transformations": [
+						{
+							"name": "select1"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          EQRY_DLR_NO as string,",
+						"          EQRY_ENQRY_NO as string,",
+						"          EQRY_CORP_NO as string,",
+						"          EQRY_CMPN_NO as string,",
+						"          EQRY_DATE as date,",
+						"          EQRY_SRC_CODE as string,",
+						"          EQRY_STAT as short,",
+						"          EQRY_TYPE as string,",
+						"          EQRY_TEST_DRVR_DATE as string,",
+						"          EQRY_FNCE_YN as boolean,",
+						"          EQRY_FNCER_CODE as string,",
+						"          EQRY_LOAN_AMT as double,",
+						"          EQRY_TENOR_MNTHS as boolean,",
+						"          EQRY_EXCHG_YN as boolean,",
+						"          EQRY_EXCHG_MODEL_CODE as string,",
+						"          EQRY_EXCHG_SRC_CODE as double,",
+						"          EQRY_EXPCT_PRICE as double,",
+						"          EQRY_QUOTD_PRICE as double,",
+						"          EQRY_CLSE_DATE as date,",
+						"          EQRY_CLSE_TYPE as double,",
+						"          EQRY_CLSE_RMRKS as string,",
+						"          EQRY_EMP_NO as string,",
+						"          EQRY_CUST_NO as string,",
+						"          EQRY_LISTD_CORP as string,",
+						"          EQRY_CORP_NAME as string,",
+						"          EQRY_RFRL_BY as string,",
+						"          EQRY_CRTE_DTIME as timestamp,",
+						"          EQRY_CRTE_EMP_NO as string,",
+						"          EQRY_UPDT_DTIME as timestamp,",
+						"          EQRY_UPDT_EMP_NO as string,",
+						"          EQRY_EQFU_SEQ as double,",
+						"          EQRY_UPDT_DATE as string,",
+						"          EQRY_TEST_DRIVE_YN as boolean,",
+						"          EQRY_SR_NUM as string,",
+						"          EQRY_SR_TYPE as string,",
+						"          EQRY_FLW_STATUS as boolean,",
+						"          EQRY_ASSOCIATE_ID as double,",
+						"          EQRY_RSO_ID as double,",
+						"          EQRY_FUEL_TYPE as string,",
+						"          EQRY_PRESENT_CAR_YN as boolean,",
+						"          EQRY_MAKER_CODE as string,",
+						"          EQRY_TD_VIN as string,",
+						"          EQRY_CUST_BLOCK as boolean,",
+						"          EQRY_BULK_SALE as boolean,",
+						"          EQRY_P_MODL_YEAR as double,",
+						"          EQRY_CLS_VAL as double,",
+						"          EQRY_INCOM_GROUP as double,",
+						"          EQRY_REFL_ID as string,",
+						"          EQRY_REFL_PUNCH_DLR_NO as string,",
+						"          EQRY_PLAN_DATE as string,",
+						"          EQRY_ATIVT_NAME_CODE as string,",
+						"          EQRY_ATIVT_LOC_CODE as string,",
+						"          EQRY_NEWCAR_YN as boolean,",
+						"          EQRY_FCALL_EMP_NO as string,",
+						"          EQRY_APNT_DTIME as string,",
+						"          VIST_DTIME as string,",
+						"          LEAV_DTIME as string,",
+						"          EQRY_CTGR_CODE as double,",
+						"          EQRY_SUB_SRC_CODE as short,",
+						"          EQRY_CLSE_GRP_TYPE as string,",
+						"          EQRY_BUDG_TYPE as string,",
+						"          EQRY_CERT_TYPE as string,",
+						"          EQRY_UC_SC_EMP_NO as string,",
+						"          EQRY_TDRIVE_RMRKS as string,",
+						"          EQRY_VC_RMRKS as string,",
+						"          EQRY_REQ_TYPE as string,",
+						"          EQRY_EMAILSEND_YN as string,",
+						"          EQRY_SRC_FLG as string,",
+						"          EQRY_SR_NUM_REAL as string,",
+						"          EQRY_ENG_TYP as string,",
+						"          EQRY_TRNSM_TYP as string,",
+						"          SOQ_TAG_YN as boolean,",
+						"          EQRY_EVAL_YN as string,",
+						"          EQRY_EXCH_DN as string,",
+						"          EQRY_FINAL_BP as string,",
+						"          EQRY_CAMPGN_NO as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> source1",
+						"source1 select(mapColumn(",
+						"          EQRY_DLR_NO,",
+						"          EQRY_ENQRY_NO,",
+						"          EQRY_CORP_NO,",
+						"          EQRY_CMPN_NO,",
+						"          EQRY_DATE,",
+						"          EQRY_SRC_CODE,",
+						"          EQRY_STAT,",
+						"          EQRY_TYPE,",
+						"          EQRY_FNCE_YN,",
+						"          EQRY_FNCER_CODE,",
+						"          EQRY_LOAN_AMT,",
+						"          EQRY_TENOR_MNTHS,",
+						"          EQRY_EXCHG_YN,",
+						"          EQRY_EXCHG_MODEL_CODE,",
+						"          EQRY_EXPCT_PRICE,",
+						"          EQRY_QUOTD_PRICE,",
+						"          EQRY_CLSE_DATE,",
+						"          EQRY_CLSE_TYPE,",
+						"          EQRY_CLSE_RMRKS,",
+						"          EQRY_EMP_NO,",
+						"          EQRY_CUST_NO,",
+						"          EQRY_LISTD_CORP,",
+						"          EQRY_CORP_NAME,",
+						"          EQRY_CRTE_DTIME,",
+						"          EQRY_CRTE_EMP_NO,",
+						"          EQRY_UPDT_DTIME,",
+						"          EQRY_UPDT_EMP_NO,",
+						"          EQRY_EQFU_SEQ,",
+						"          EQRY_SR_NUM,",
+						"          EQRY_SR_TYPE,",
+						"          EQRY_FLW_STATUS,",
+						"          EQRY_ASSOCIATE_ID,",
+						"          EQRY_RSO_ID,",
+						"          EQRY_FUEL_TYPE,",
+						"          EQRY_PRESENT_CAR_YN,",
+						"          EQRY_MAKER_CODE,",
+						"          EQRY_CUST_BLOCK,",
+						"          EQRY_BULK_SALE,",
+						"          EQRY_P_MODL_YEAR,",
+						"          EQRY_CLS_VAL,",
+						"          EQRY_NEWCAR_YN,",
+						"          EQRY_FCALL_EMP_NO,",
+						"          EQRY_CTGR_CODE,",
+						"          EQRY_SUB_SRC_CODE,",
+						"          EQRY_CLSE_GRP_TYPE,",
+						"          EQRY_TDRIVE_RMRKS,",
+						"          EQRY_VC_RMRKS,",
+						"          EQRY_REQ_TYPE,",
+						"          EQRY_SRC_FLG,",
+						"          EQRY_SR_NUM_REAL,",
+						"          EQRY_ENG_TYP,",
+						"          EQRY_TRNSM_TYP",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> select1",
+						"select1 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     format: 'delta',",
+						"     fileSystem: 'deltaformat',",
+						"     mergeSchema: false,",
+						"     autoCompact: false,",
+						"     optimizedWrite: false,",
+						"     vacuum: 0,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     umask: 0022,",
+						"     preCommands: [],",
+						"     postCommands: [],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink1"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/Sales_AfterSales_CRM_SCEQRY_TB')]",
+				"[concat(variables('factoryId'), '/linkedServices/SecondAzureDataLakeStorageLinkServices')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipelinefordelta')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "Data flow1",
+						"name": "ETLdataflow",
 						"type": "ExecuteDataFlow",
 						"dependsOn": [],
 						"policy": {
@@ -659,11 +881,11 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataflow": {
-								"referenceName": "dataflow1",
+								"referenceName": "ETLdataflow",
 								"type": "DataFlowReference",
 								"parameters": {},
 								"datasetParameters": {
-									"SalesAfterSalesCRMSCEQRY": {},
+									"source1": {},
 									"sink1": {}
 								}
 							},
@@ -683,7 +905,7 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/dataflows/dataflow1')]"
+				"[concat(variables('factoryId'), '/dataflows/ETLdataflow')]"
 			]
 		}
 	]
