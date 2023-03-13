@@ -31,6 +31,9 @@
 				}
 			],
 			"scriptLines": [
+				"parameters{",
+				"     FilePath as string ($FileName)",
+				"}",
 				"source(output(",
 				"          EQRY_DLR_NO as string,",
 				"          EQRY_ENQRY_NO as string,",
@@ -171,7 +174,7 @@
 				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
-				"     fileSystem: 'deltaformat',",
+				"     fileSystem: 'filename',",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
 				"     optimizedWrite: false,",
