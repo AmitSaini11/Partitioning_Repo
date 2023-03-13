@@ -17,17 +17,7 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "ETLdataflow",
-						"type": "DataFlowReference",
-						"parameters": {
-							"FilePath": {
-								"value": "@pipeline().parameters.FileName",
-								"type": "Expression"
-							},
-							"parameter1": {
-								"value": "@pipeline().parameters.FileName",
-								"type": "Expression"
-							}
-						}
+						"type": "DataFlowReference"
 					},
 					"compute": {
 						"coreCount": 8,
