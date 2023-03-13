@@ -1,9 +1,9 @@
 {
-	"name": "pipelineforroundrobin",
+	"name": "pipelineforsql",
 	"properties": {
 		"activities": [
 			{
-				"name": "ETLdataflow",
+				"name": "ETLdataflow_trials",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "ETLdataflow_round_robin",
+						"referenceName": "ETLdataflow_trials",
 						"type": "DataFlowReference"
 					},
 					"compute": {

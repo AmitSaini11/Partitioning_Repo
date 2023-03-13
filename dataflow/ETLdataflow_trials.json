@@ -1,5 +1,5 @@
 {
-	"name": "ETLdataflow_round_robin",
+	"name": "ETLdataflow_trials",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
