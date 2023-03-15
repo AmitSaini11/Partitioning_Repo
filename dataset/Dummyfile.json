@@ -1,0 +1,27 @@
+{
+	"name": "Dummyfile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLSGen2LinkServices",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "dummy.txt",
+				"folderPath": "input",
+				"fileSystem": "inputcontainer"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			}
+		]
+	}
+}
