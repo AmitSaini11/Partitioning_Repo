@@ -45,13 +45,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Dummy",
+						"referenceName": "dumptocsv",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSqlTable1",
+						"referenceName": "AzureSqlTable2",
 						"type": "DatasetReference"
 					}
 				]

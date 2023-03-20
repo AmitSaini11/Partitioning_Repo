@@ -1,0 +1,308 @@
+{
+	"name": "tempcsvdata",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SecondAzureDataLakeStorageLinkServices",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "part-00005-2bdedeb7-0e2e-44f2-af3c-3a068d5aebe3-c000.csv",
+				"fileSystem": "cleandatacsv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "EQRY_DLR_NO",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_ENQRY_NO",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_CORP_NO",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_CMPN_NO",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_DATE",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_SRC_CODE",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_STAT",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_FNCE_YN",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_FNCER_CODE",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_LOAN_AMT",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_TENOR_MNTHS",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_EXCHG_YN",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_EXCHG_MODEL_CODE",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_EXPCT_PRICE",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_QUOTD_PRICE",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_CLSE_DATE",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_CLSE_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_CLSE_RMRKS",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_EMP_NO",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_CUST_NO",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_LISTD_CORP",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_CORP_NAME",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_CRTE_DTIME",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_CRTE_EMP_NO",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_UPDT_DTIME",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_UPDT_EMP_NO",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_EQFU_SEQ",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_SR_NUM",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_SR_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_FLW_STATUS",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_ASSOCIATE_ID",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_RSO_ID",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_FUEL_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_PRESENT_CAR_YN",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_MAKER_CODE",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_CUST_BLOCK",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_BULK_SALE",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_P_MODL_YEAR",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_CLS_VAL",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_NEWCAR_YN",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_FCALL_EMP_NO",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_CTGR_CODE",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_SUB_SRC_CODE",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_CLSE_GRP_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_TDRIVE_RMRKS",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_VC_RMRKS",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_REQ_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_SRC_FLG",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_SR_NUM_REAL",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_ENG_TYP",
+				"type": "String"
+			},
+			{
+				"name": "EQRY_TRNSM_TYP",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_DLR_NO",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_ENQRY_NO",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_SEQ",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_CORP_NO",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_CMPN_NO",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_MODEL_CODE",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_VRNT_CODE",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_COLOR_CODE",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_QTY",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_CRTE_DTIME",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_CRTE_EMP_NO",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_UPDT_DTIME",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_UPDT_EMP_NO",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_INTCOLOR_CODE",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_MAKER_CODE",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_INT_COLOR_CODE",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_QUOTED_PRICE",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_EXPECTED_PRICE",
+				"type": "String"
+			},
+			{
+				"name": "EQCR_FUEL_TYPE",
+				"type": "String"
+			}
+		]
+	}
+}
