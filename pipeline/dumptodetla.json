@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "salescrmdataflow",
+				"name": "dataflow3",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -16,12 +16,12 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "salescrmdataflow",
+						"referenceName": "dataflow3",
 						"type": "DataFlowReference"
 					},
 					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
+						"coreCount": 32,
+						"computeType": "MemoryOptimized"
 					},
 					"traceLevel": "Fine"
 				}

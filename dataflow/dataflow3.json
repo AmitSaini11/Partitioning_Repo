@@ -1,0 +1,137 @@
+{
+	"name": "dataflow3",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "SecondAzureDataLakeStorageLinkServices",
+						"type": "LinkedServiceReference"
+					},
+					"name": "SalesAftersales"
+				},
+				{
+					"linkedService": {
+						"referenceName": "SecondAzureDataLakeStorageLinkServices",
+						"type": "LinkedServiceReference"
+					},
+					"name": "salesCRM"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "dumptocsv",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "join1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          EQRY_DLR_NO as string,",
+				"          EQRY_ENQRY_NO as string,",
+				"          EQRY_CORP_NO as string,",
+				"          EQRY_CMPN_NO as string,",
+				"          EQRY_DATE as date,",
+				"          EQRY_SRC_CODE as string,",
+				"          EQRY_STAT as short,",
+				"          EQRY_TYPE as string,",
+				"          EQRY_FNCE_YN as boolean,",
+				"          EQRY_FNCER_CODE as string,",
+				"          EQRY_LOAN_AMT as double,",
+				"          EQRY_TENOR_MNTHS as boolean,",
+				"          EQRY_EXCHG_YN as boolean,",
+				"          EQRY_EXCHG_MODEL_CODE as string,",
+				"          EQRY_EXPCT_PRICE as double,",
+				"          EQRY_QUOTD_PRICE as double,",
+				"          EQRY_CLSE_DATE as date,",
+				"          EQRY_CLSE_TYPE as double,",
+				"          EQRY_CLSE_RMRKS as string,",
+				"          EQRY_EMP_NO as string,",
+				"          EQRY_CUST_NO as string,",
+				"          EQRY_LISTD_CORP as string,",
+				"          EQRY_CORP_NAME as string,",
+				"          EQRY_CRTE_DTIME as timestamp,",
+				"          EQRY_CRTE_EMP_NO as string,",
+				"          EQRY_UPDT_DTIME as timestamp,",
+				"          EQRY_UPDT_EMP_NO as string,",
+				"          EQRY_EQFU_SEQ as double,",
+				"          EQRY_SR_NUM as string,",
+				"          EQRY_SR_TYPE as string,",
+				"          EQRY_FLW_STATUS as boolean,",
+				"          EQRY_ASSOCIATE_ID as double,",
+				"          EQRY_RSO_ID as double,",
+				"          EQRY_FUEL_TYPE as string,",
+				"          EQRY_PRESENT_CAR_YN as boolean,",
+				"          EQRY_MAKER_CODE as string,",
+				"          EQRY_CUST_BLOCK as boolean,",
+				"          EQRY_BULK_SALE as boolean,",
+				"          EQRY_P_MODL_YEAR as double,",
+				"          EQRY_CLS_VAL as double,",
+				"          EQRY_NEWCAR_YN as boolean,",
+				"          EQRY_FCALL_EMP_NO as string,",
+				"          EQRY_CTGR_CODE as double,",
+				"          EQRY_SUB_SRC_CODE as short,",
+				"          EQRY_CLSE_GRP_TYPE as string,",
+				"          EQRY_TDRIVE_RMRKS as string,",
+				"          EQRY_VC_RMRKS as string,",
+				"          EQRY_REQ_TYPE as string,",
+				"          EQRY_SRC_FLG as string,",
+				"          EQRY_SR_NUM_REAL as string,",
+				"          EQRY_ENG_TYP as string,",
+				"          EQRY_TRNSM_TYP as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'currentpartitioning') ~> SalesAftersales",
+				"source(output(",
+				"          EQCR_DLR_NO as string,",
+				"          EQCR_ENQRY_NO as string,",
+				"          EQCR_SEQ as boolean,",
+				"          EQCR_CORP_NO as string,",
+				"          EQCR_CMPN_NO as string,",
+				"          EQCR_MODEL_CODE as string,",
+				"          EQCR_VRNT_CODE as double,",
+				"          EQCR_COLOR_CODE as string,",
+				"          EQCR_QTY as boolean,",
+				"          EQCR_CRTE_DTIME as timestamp,",
+				"          EQCR_CRTE_EMP_NO as string,",
+				"          EQCR_UPDT_DTIME as timestamp,",
+				"          EQCR_UPDT_EMP_NO as string,",
+				"          EQCR_INTCOLOR_CODE as string,",
+				"          EQCR_MAKER_CODE as string,",
+				"          EQCR_INT_COLOR_CODE as string,",
+				"          EQCR_QUOTED_PRICE as boolean,",
+				"          EQCR_EXPECTED_PRICE as string,",
+				"          EQCR_FUEL_TYPE as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'salescrm-sceqrytbcurrentpartition') ~> salesCRM",
+				"SalesAftersales, salesCRM join(EQRY_DLR_NO == EQCR_DLR_NO,",
+				"     joinType:'left',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}

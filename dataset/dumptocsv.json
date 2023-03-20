@@ -1,0 +1,22 @@
+{
+	"name": "dumptocsv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SecondAzureDataLakeStorageLinkServices",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "cleandatacsv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
