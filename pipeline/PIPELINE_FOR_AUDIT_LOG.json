@@ -66,6 +66,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -156,44 +157,6 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"dataflow": {
-									"referenceName": "df_logdetails_Append",
-									"type": "DataFlowReference",
-									"parameters": {
-										"ADFName": {
-											"value": "'@{pipeline().DataFactory}'",
-											"type": "Expression"
-										},
-										"PipelineName": {
-											"value": "'@{pipeline().Pipeline}'",
-											"type": "Expression"
-										},
-										"Status": {
-											"value": "'@{string('Success')}'",
-											"type": "Expression"
-										},
-										"RunId": {
-											"value": "'@{pipeline().RunId}'",
-											"type": "Expression"
-										},
-										"TriggerName": {
-											"value": "'@{pipeline().TriggerName}'",
-											"type": "Expression"
-										},
-										"logFileName": {
-											"value": "'@{variables('logFileName')}'",
-											"type": "Expression"
-										}
-									},
-									"datasetParameters": {
-										"log": {
-											"logFileName": {
-												"value": "@variables('logFileName')",
-												"type": "Expression"
-											}
-										}
-									}
-								},
 								"compute": {
 									"coreCount": 8,
 									"computeType": "General"
