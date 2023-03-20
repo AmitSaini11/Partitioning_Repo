@@ -1,0 +1,301 @@
+{
+	"name": "AzureSqlTableFinalDataDump",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "EQRY_DLR_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_ENQRY_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_CORP_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_CMPN_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_SRC_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_STAT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_FNCE_YN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_FNCER_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_LOAN_AMT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_TENOR_MNTHS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_EXCHG_YN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_EXCHG_MODEL_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_EXPCT_PRICE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_QUOTD_PRICE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_CLSE_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_CLSE_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_CLSE_RMRKS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_EMP_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_CUST_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_LISTD_CORP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_CORP_NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_CRTE_DTIME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_CRTE_EMP_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_UPDT_DTIME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_UPDT_EMP_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_EQFU_SEQ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_SR_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_SR_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_FLW_STATUS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_ASSOCIATE_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_RSO_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_FUEL_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_PRESENT_CAR_YN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_MAKER_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_CUST_BLOCK",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_BULK_SALE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_P_MODL_YEAR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_CLS_VAL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_NEWCAR_YN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_FCALL_EMP_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_CTGR_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_SUB_SRC_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_CLSE_GRP_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_TDRIVE_RMRKS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_VC_RMRKS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_REQ_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_SRC_FLG",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_SR_NUM_REAL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_ENG_TYP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQRY_TRNSM_TYP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_DLR_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_ENQRY_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_SEQ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_CORP_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_CMPN_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_MODEL_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_VRNT_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_COLOR_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_QTY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_CRTE_DTIME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_CRTE_EMP_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_UPDT_DTIME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_UPDT_EMP_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_INTCOLOR_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_MAKER_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_INT_COLOR_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_QUOTED_PRICE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_EXPECTED_PRICE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EQCR_FUEL_TYPE",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "sales_joins"
+		}
+	}
+}
