@@ -1,0 +1,74 @@
+{
+	"name": "dataflow3",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Sales_CRM_SCEQCR_TB",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "SecondAzureDataLakeStorageLinkServices",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1",
+					"rejectedDataLinkedService": {
+						"referenceName": "SecondAzureDataLakeStorageLinkServices",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          EQCR_DLR_NO as string,",
+				"          EQCR_ENQRY_NO as string,",
+				"          EQCR_SEQ as boolean,",
+				"          EQCR_CORP_NO as string,",
+				"          EQCR_CMPN_NO as string,",
+				"          EQCR_MODEL_CODE as string,",
+				"          EQCR_VRNT_CODE as double,",
+				"          EQCR_COLOR_CODE as string,",
+				"          EQCR_QTY as boolean,",
+				"          EQCR_CRTE_DTIME as timestamp,",
+				"          EQCR_CRTE_EMP_NO as string,",
+				"          EQCR_UPDT_DTIME as timestamp,",
+				"          EQCR_UPDT_EMP_NO as string,",
+				"          EQCR_INTCOLOR_CODE as string,",
+				"          EQCR_MAKER_CODE as string,",
+				"          EQCR_INT_COLOR_CODE as string,",
+				"          EQCR_QUOTED_PRICE as boolean,",
+				"          EQCR_EXPECTED_PRICE as string,",
+				"          EQCR_FUEL_TYPE as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'salescrm-sceqrytbcurrentpartition',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}
