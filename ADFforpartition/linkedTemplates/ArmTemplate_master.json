@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ADLSGen2LinkServices'"
 		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
+		},
 		"LinkServicesAzureSqlDatabase_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LinkServicesAzureSqlDatabase'"
@@ -57,6 +61,9 @@
 					"ADLSGen2LinkServices_accountKey": {
 						"value": "[parameters('ADLSGen2LinkServices_accountKey')]"
 					},
+					"AzureSqlDatabase1_connectionString": {
+						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
+					},
 					"LinkServicesAzureSqlDatabase_connectionString": {
 						"value": "[parameters('LinkServicesAzureSqlDatabase_connectionString')]"
 					},
@@ -72,6 +79,26 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "ADFforpartition_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'ADFforpartition_ArmTemplate_0')]"
+			]
 		}
 	]
 }
