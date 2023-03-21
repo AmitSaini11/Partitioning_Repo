@@ -55,7 +55,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "dummytable2",
+						"referenceName": "Dummyfile",
 						"type": "DatasetReference"
 					}
 				]
