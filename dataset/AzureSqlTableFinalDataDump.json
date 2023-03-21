@@ -297,5 +297,6 @@
 			"schema": "dbo",
 			"table": "sales_joins"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }
