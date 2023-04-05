@@ -70,7 +70,7 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     partitionBy('key',",
 				"          1,",
-				"          EQCR_FUEL_TYPE",
+				"          EQCR_CRTE_DTIME",
 				"     )) ~> sink1"
 			]
 		}
